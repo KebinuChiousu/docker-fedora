@@ -1,0 +1,27 @@
+version: '2'
+services:
+  build-fedora:
+    hostname: fedora
+    image: meredithkm/fedora
+    container_name: build-fedora
+    restart: unless-stopped
+    ports:
+     - "2222:22/tcp"
+    volumes:
+     - repo:/srv/repo/
+     - ssh_config:/etc/ssh/
+     - home:/home/fedora/
+
+volumes:
+  repo:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /local/docker-data/fedora/repo/
+  ssh_config:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /local/docker-data/fedora/ssh_config
+  home:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /opt/docker-data/fedora/fedora
