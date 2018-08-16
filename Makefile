@@ -11,3 +11,7 @@ destroy:
 	docker-compose down -v
 check:
 	docker-compose ps
+network-create:
+	docker network create --driver bridge --subnet "240.20.0.0/24" --gateway "240.20.0.1" docker-lan
+network-destroy:
+	docker network rm docker-lan

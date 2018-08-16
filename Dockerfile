@@ -1,6 +1,7 @@
 FROM fedora:27
 
-RUN dnf -y install openssh-clients openssh-server git which sudo zsh python3 golang
+RUN dnf -y install openssh-clients openssh-server iputils bind-utils nc wget && \
+    dnf -y install git which sudo zsh python3 golang
 
 COPY entrypoint.sh /
 

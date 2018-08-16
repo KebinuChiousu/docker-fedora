@@ -11,6 +11,8 @@ services:
      - repo:/srv/repo/
      - ssh_config:/etc/ssh/
      - home:/home/fedora/
+    networks:
+     - default
 
 volumes:
   repo:
@@ -25,3 +27,8 @@ volumes:
     driver: local-persist
     driver_opts:
       mountpoint: /opt/docker-data/fedora/fedora
+
+networks:
+  default:
+    external:
+      name: docker-lan
